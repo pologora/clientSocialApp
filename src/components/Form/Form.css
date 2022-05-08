@@ -1,0 +1,94 @@
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: none;
+}
+
+
+.form__element {
+    margin-block: 0.8rem;
+    background-color: rgb(229, 229, 229);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form__element:hover {
+    background-color: rgb(210, 210, 210);
+}
+
+.form__element:focus {
+    background-color: #fff;
+    outline: solid 2px rgba(30,  80, 250, 0.47);
+    box-sizing: content-box;
+}
+
+.form__header {
+    position: relative;
+    font-size: 2rem;
+}
+
+.form__header::after {
+    position: absolute;
+    content: '';
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%);
+    height: 3px;
+    width: 50px;
+    border-radius: 2px;
+    background-color: var(--secondary-background-color);
+}
+
+.form__text {
+    padding: 10px;
+}
+
+.form__message {
+    padding: 10px;
+}
+
+.form__btn {
+    padding: 8px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+.btn__primary {
+    background-color: rgb(10, 10, 201);
+}
+
+.btn__primary:hover {
+    background-color: rgb(3, 3, 118);
+}
+
+.btn__danger {
+    background-color: rgb(194, 5, 5);
+}
+
+.btn__danger:hover {
+    background-color: rgb(126, 3, 3);;
+}
+
+.form__file {
+    border: none;
+    margin-block: 0.8rem;
+}
+
+.form__message {
+    min-height: 150px;
+}
