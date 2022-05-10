@@ -1,8 +1,8 @@
 import './Form.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import FileBase64 from 'react-file-base64'
-import { useDispatch } from 'react-redux'
-import { createPost } from '../../actions/posts'
+import { useDispatch, useSelector } from 'react-redux'
+import { createPost, updatePost } from '../../actions/posts'
 
 const defaultPostData = {
   creator: '',
@@ -11,9 +11,16 @@ const defaultPostData = {
   tags: '',
   selectedFile: '',
 }
-const Form = () => {
+
+const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState(defaultPostData)
   const dispatch = useDispatch()
+  const post = useSelector((state) => (currentId ? state.posts.find((p) => p._id === currentId) : null))
+
+  useEffect(() => {
+    if (post) setPostData(post)
+  }, [post])
+
   const handleOnChange = (e) => {
     const { value, name } = e.target
 
@@ -23,13 +30,30 @@ const Form = () => {
     }))
   }
 
+  const addTags =(e) => {
+    setPostData((prev) => ({
+      ...prev,
+      tags: e.target.value.split(','),
+    }))
+  }
+
+  const clear = () => {
+    setPostData(defaultPostData)
+    setCurrentId(null)
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(createPost(postData))
+    if (currentId) {
+      dispatch(updatePost(currentId, postData))
+    } else {
+      dispatch(createPost(postData))
+    }
+    clear()
   }
+
   return (
     <div className='form'>
-      <h2 className='form__header'>Create a Post</h2>
+      <h2 className='form__header'>{currentId ? 'Editing' : 'Create'} a Post</h2>
       <input
         type='text'
         name='creator'
@@ -59,14 +83,14 @@ const Form = () => {
         type='text'
         name='tags'
         value={postData.tags}
-        onChange={handleOnChange}
+        onChange={addTags}
         placeholder='Tags'
         className='form__title form__text form__element'
       />
-      {/* <input type='file' name='file' value={postData.file} className='form__file' onChange={handleOnChange} /> */}
       <div className='form__file'>
         <FileBase64
           type='file'
+          value={postData.selectedFile}
           multiple={false}
           onDone={({ base64 }) => setPostData((prev) => ({ ...prev, selectedFile: base64 }))}
         />
@@ -74,7 +98,7 @@ const Form = () => {
       <button className='btn btn__primary form__btn ' onClick={handleSubmit}>
         Submit
       </button>
-      <button className='btn btn__danger form__btn' onClick={() => setPostData(defaultPostData)}>
+      <button className='btn btn__danger form__btn' onClick={clear}>
         Clear
       </button>
     </div>

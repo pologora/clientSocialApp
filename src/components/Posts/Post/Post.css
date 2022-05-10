@@ -1,0 +1,95 @@
+.post {
+   width: 300px;
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.post__header {
+    position: relative;
+}
+
+.post__image {
+    width: 100%;
+}
+.post__date,
+.post__creator {
+    position: absolute;
+    left: 10px;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.post__date {
+    top: 15%;
+}
+
+.post__creator {
+    top: 5%;
+}
+
+.post__dots{
+    position: absolute;
+    top: 1px;
+    right: 15px;
+    font-size: 2.5rem;
+}
+
+.post__dots:hover {
+    cursor: pointer;
+}
+
+.post__main {
+    position: relative;
+    padding: 5%;
+    text-align: left;
+}
+
+.post__tags {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.post__title {
+    margin-block: 1rem;
+}
+
+.post__likes-container {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    color: blue;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.post__likes-count {
+    text-transform: uppercase;
+    margin-left: 3px;
+}
+
+.post__delete-container {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: rgb(241, 6, 6);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.post__likes-container:hover,
+.post__delete-container:hover {
+    color: rgb(5, 5, 170);
+}
+
+.post__delete-text {
+    text-transform: uppercase;
+    margin-left: 3px;
+}
+
