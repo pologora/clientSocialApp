@@ -1,7 +1,6 @@
 import './Post.css'
 import { AiFillLike } from 'react-icons/ai'
 import { AiFillDelete } from 'react-icons/ai'
-import testImg from '../../../images/pies3.jpg'
 import moment from 'moment'
 import { useDispatch } from 'react-redux'
 

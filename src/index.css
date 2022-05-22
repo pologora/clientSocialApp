@@ -15,6 +15,7 @@ html {
     font-family: 'Poppins', sans-serif;
     font-size: 10px;
     scroll-behavior: smooth;
+    background-color: rgb(246, 242, 238);
 }
 
 .app {
